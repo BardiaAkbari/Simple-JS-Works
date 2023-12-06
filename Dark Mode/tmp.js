@@ -1,10 +1,8 @@
 window.onload = function(){
-    const btn = document.getElementById('btn');
-    btn.addEventListener('click', function(){
-        document.body.style.background = changer();
-    })
+    const toggle = document.getElementById('toggle');
+    toggle.addEventListener('change', function(e){
+        console.log("djdj");
+        document.body.classList.toggle('dark', e.target.checked)
 
-    function changer(){
-        return `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`
-    }
+    })
 }
