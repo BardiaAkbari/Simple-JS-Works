@@ -2,16 +2,17 @@ let Idout;
 let Idin;
 
 function fadeOut(){
-    Idout = setInterval(hide(), 20);
+    clearInterval(Idin)
+    Idout = setInterval(hide, 20);
 }
 
 function hide(){
     let img = document.getElementById('img');
-    opacitty = window.getComputedStyle(img).getPropertyValue('opacity');
+    opacity = Number(window.getComputedStyle(img).getPropertyValue('opacity'));
     
-    if(opacitty > 0){
-        opacitty -= 0.01;
-        img.style.opacity = opacitty;
+    if(opacity > 0){
+        opacity = opacity - 0.01;
+        img.style.opacity = opacity;
     }
     else{
         clearInterval(Idout);
@@ -19,9 +20,19 @@ function hide(){
 }
 
 function fadeIn(){
-    Idin = setInterval(show(), 20);
+    clearInterval(Idout)
+    Idin = setInterval(show, 20);
 }
 
 function show(){
+    let img = document.getElementById('img');
+    opacity = Number(window.getComputedStyle(img).getPropertyValue('opacity'));
 
+    if(opacity < 1){
+        opacity = opacity + 0.01;
+        img.style.opacity = opacity;
+    }
+    else{
+        clearInterval(Idin);
+    }
 }
